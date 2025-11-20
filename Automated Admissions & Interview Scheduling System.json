@@ -1,0 +1,527 @@
+{
+  "name": "Automated Admissions & Interview Scheduling System",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "/student-case-form",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "id": "707ab70b-cf1e-4e72-99d0-41995344fe62",
+      "name": "Form Submission Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -1760,
+        -64
+      ],
+      "webhookId": "9326fb47-fad7-4634-903b-e1c5faae6f6a"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fd494e3f-5dbd-44e0-9fd8-f3667a6da0ae",
+              "name": "HR",
+              "value": "faryadshahfs@gmail.com",
+              "type": "string"
+            },
+            {
+              "id": "f4b1480a-9d8e-4a1f-b880-e6da40f70a14",
+              "name": "interview link ",
+              "value": 3122606427,
+              "type": "number"
+            },
+            {
+              "id": "3bb98c1b-b195-4ec4-a1e7-e5428aaf1195",
+              "name": "hrSlackChannel",
+              "value": "admissions",
+              "type": "string"
+            },
+            {
+              "id": "4a0ffa33-8353-4870-9e45-08c19f3fb9e7",
+              "name": "ZoomLink",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "b2f0809f-6f28-4a8b-87f3-5c060ce29a6f",
+      "name": "Workflow Configuration",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -1520,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "12IJvW3GEReTJoZ5VfFo8wktssYalzD595ouZ-a-pk1A",
+          "mode": "list",
+          "cachedResultName": "Student's Data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/12IJvW3GEReTJoZ5VfFo8wktssYalzD595ouZ-a-pk1A/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/12IJvW3GEReTJoZ5VfFo8wktssYalzD595ouZ-a-pk1A/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Case Number ": "={{ $json.body.caseNumber }}",
+            "Full Name": "={{ $json.body.fullName }}",
+            "Email": "={{ $json.body.email }}",
+            "Phone": "={{ $json.body.phone }}",
+            "Gender": "={{ $json.body.gender }}",
+            "Date of Birth": "={{ $json.body.dob }}",
+            "Program Applying For": "={{ $json.body.program }}",
+            "Highest Qualification": "={{ $json.body.qualification }}",
+            "Address": "={{ $json.body.address }}",
+            "City": "={{ $json.body.city }}",
+            "Country": "={{ $json.body.country }}"
+          },
+          "matchingColumns": [
+            "Case Number "
+          ],
+          "schema": [
+            {
+              "id": "Case Number ",
+              "displayName": "Case Number ",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Full Name",
+              "displayName": "Full Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Phone",
+              "displayName": "Phone",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Date of Birth",
+              "displayName": "Date of Birth",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Gender",
+              "displayName": "Gender",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Program Applying For",
+              "displayName": "Program Applying For",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Highest Qualification",
+              "displayName": "Highest Qualification",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Address",
+              "displayName": "Address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Country",
+              "displayName": "Country",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "5fd75d8c-b14a-4d64-91b8-82fd224928c8",
+      "name": "Add Student to Google Sheets",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1280,
+        -64
+      ],
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "Jl7d2PSiSKkVNPoP",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "id-1",
+              "leftValue": "={{ $json['Case Number '] }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9041cab1-3770-4a36-b1ef-5dc566a85aa2",
+      "name": "Check Google Sheets Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1056,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "calendar": {
+          "__rl": true,
+          "value": "quizdose45@gmail.com",
+          "mode": "list",
+          "cachedResultName": "quizdose45@gmail.com"
+        },
+        "additionalFields": {
+          "summary": "=Case {{ $json.caseNumber }} - {{ $json['Full Name'] }}"
+        }
+      },
+      "id": "d68cd10f-8e72-4632-9159-76d31a5616ab",
+      "name": "Schedule Interview in Calendar",
+      "type": "n8n-nodes-base.googleCalendar",
+      "typeVersion": 1.3,
+      "position": [
+        -832,
+        -160
+      ],
+      "credentials": {
+        "googleCalendarOAuth2Api": {
+          "id": "0pLlhVJnuxZcSxMu",
+          "name": "Google Calendar account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "id-1",
+              "leftValue": "={{ $('Schedule Interview in Calendar').item.json.id }}",
+              "operator": {
+                "type": "string",
+                "operation": "exists"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "df524fd3-d678-482c-adf0-ffe7e9db2bb9",
+      "name": "Check Calendar Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -608,
+        -160
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Check Google Sheets Success').item.json.Email }}",
+        "subject": "Interview Confirmation - Your Application",
+        "message": "=<!-- Proven Solutions - Student Application Confirmation Email -->\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n<meta charset=\"UTF-8\" />\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n<title>Application Confirmation</title>\n\n<style>\n  body {\n    font-family: Arial, sans-serif;\n    background-color: #f7f7f7;\n    margin: 0;\n    padding: 0;\n    color: #444;\n  }\n  .container {\n    max-width: 650px;\n    margin: 20px auto;\n    background: #ffffff;\n    border-radius: 10px;\n    overflow: hidden;\n    box-shadow: 0 2px 10px rgba(0,0,0,0.1);\n  }\n  .header {\n    text-align: center;\n    padding: 20px;\n    background: #ffffff;\n  }\n  .header img {\n    width: 180px;\n  }\n  .content {\n    padding: 25px 30px;\n  }\n  h2 {\n    color: #0078ff;\n    margin-bottom: 10px;\n  }\n  .info-box {\n    background: #fafafa;\n    padding: 15px;\n    border-left: 4px solid #0078ff;\n    margin: 20px 0;\n    border-radius: 6px;\n  }\n  .footer {\n    text-align: center;\n    padding: 18px;\n    background: #f1f1f1;\n    color: #666;\n    font-size: 13px;\n  }\n  .label {\n    font-weight: bold;\n    color: #333;\n  }\n</style>\n\n</head>\n<body>\n\n<div class=\"container\">\n\n  <div class=\"header\">\n    <img src=\"cid:proven_logo\" alt=\"Proven Solutions Logo\" />\n  </div>\n\n  <div class=\"content\">\n    <h2>Application Received</h2>\n\n    <p>Dear <strong>{{ $('Check Google Sheets Success').item.json['Full Name'] }}</strong>,</p>\n\n    <p>Thank you for submitting your application to <strong>Proven Solutions</strong>.  \n       We have successfully received your details and our team will contact you shortly.</p>\n\n    <div class=\"info-box\">\n\n      <p><span class=\"label\">Case Number:</span> {{ $('Add Student to Google Sheets').item.json['Case Number '] }}</p>\n\n      <p><span class=\"label\">Email:</span> {{ $('Add Student to Google Sheets').item.json.Email }}</p>\n      <p><span class=\"label\">Phone:</span>{{ $('Add Student to Google Sheets').item.json.Phone }} </p>\n\n      <p><span class=\"label\">Date of Birth:</span> {{ $('Add Student to Google Sheets').item.json['Date of Birth'] }}</p>\n      <p><span class=\"label\">Gender:</span>{{ $('Add Student to Google Sheets').item.json.Gender }} </p>\n\n      <p><span class=\"label\">Program Applied:</span> {{ $('Add Student to Google Sheets').item.json['Program Applying For'] }} </p>\n      <p><span class=\"label\">Highest Qualification:</span>{{ $('Add Student to Google Sheets').item.json['Highest Qualification'] }} </p>\n\n      <p><span class=\"label\">Address:</span> {{ $('Add Student to Google Sheets').item.json.Address }} </p>\n      <p><span class=\"label\">City:</span> {{ $('Add Student to Google Sheets').item.json.City }}</p>\n      <p><span class=\"label\">Country:</span> {{ $('Add Student to Google Sheets').item.json.Country }} </p>\n\n    </div>\n\n    <p>If you need any assistance, feel free to contact us:</p>\n\n    <p>\n      <strong>Email:</strong> admissions@provensolutions.com<br>\n      <strong>Phone:</strong> +92111829388, +923002342013\n    </p>\n\n    <p>We look forward to assisting you with the next steps in your academic journey.</p>\n\n  </div>\n\n  <div class=\"footer\">\n    © Proven Solutions — Overseas Education & Immigration Consultant\n  </div>\n\n</div>\n\n</body>\n</html>",
+        "options": {}
+      },
+      "id": "758de854-d262-4464-83ef-37b337d9ce6e",
+      "name": "Send Confirmation Email to Student",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -384,
+        -256
+      ],
+      "webhookId": "2c7438ef-4dcc-47c0-be99-1be71fc83af4",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "tSl8R5JMgoXQ7nkb",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "authentication": "oAuth2",
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "=admissions",
+          "mode": "name"
+        },
+        "text": "=:tada: *New Student Application Received*\n\n*Student ID:* {{ $('Add Student to Google Sheets').item.json['Case Number '] }}\n*Name:* {{ $('Add Student to Google Sheets').item.json[\"Full Name\"] }}\n*Email:* {{ $('Add Student to Google Sheets').item.json[\"Email\"] }}\n*Phone:* {{ $('Add Student to Google Sheets').item.json[\"Phone\"] }}\n\n*Program:* {{ $('Add Student to Google Sheets').item.json[\"Program Applying For\"] }}\n*Qualification:* {{ $('Add Student to Google Sheets').item.json[\"Highest Qualification\"] }}\n\n*City:* {{ $('Add Student to Google Sheets').item.json[\"City\"] }}\n*Country:* {{ $('Add Student to Google Sheets').item.json[\"Country\"] }}\n\n*Interview Date:* {{ $('Schedule Interview in Calendar').item.json.start.dateTime }}\n*Meeting Link:* {{ $('Workflow Configuration').first().json.interviewMeetingLink }}\n",
+        "otherOptions": {}
+      },
+      "id": "039451be-e0f6-4741-9492-d59afe58a387",
+      "name": "Notify HR Team via Slack",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -160,
+        -256
+      ],
+      "webhookId": "a31c9c67-33ed-476b-b662-516573bee9a9",
+      "credentials": {
+        "slackOAuth2Api": {
+          "id": "WpEpXClxYLgGBC6O",
+          "name": "Slack account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "faryadshahfs@gmail.com",
+        "subject": "ERROR: Google Sheets Failed - Student Admission",
+        "message": "=<h2>Google Sheets Error</h2><p>Failed to add student record to Google Sheets.</p><p><strong>Student Name:</strong>{{ $json[\"Full Name\"] }}</p><p><strong>Student Email:</strong> {{ $json.Email }}</p><p>Please check the Google Sheets configuration and try manually adding this record.</p>",
+        "options": {}
+      },
+      "id": "27c89c4b-1b7a-4fa9-8893-8ea5f439fd39",
+      "name": "Send Error Notification to Admin (Sheets)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -832,
+        32
+      ],
+      "webhookId": "b33087e2-69f3-47d6-b4ad-f289171ad449",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "udDM8ejjxGdCrRiC",
+          "name": "Gmail account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Workflow Configuration').first().json.adminEmail }}",
+        "subject": "ERROR: Google Calendar Failed - Student Admission",
+        "message": "=<h2>Google Calendar Error</h2><p>Failed to schedule interview in Google Calendar.</p><p><strong>Student Name:</strong> {{ $json.name }}</p><p><strong>Student Email:</strong> {{ $json.email }}</p><p><strong>Preferred Date:</strong> {{ $json.preferredInterviewDate }}</p><p>Please manually schedule the interview.</p>",
+        "options": {}
+      },
+      "id": "80538f00-ce4a-479d-8d2e-69533194336c",
+      "name": "Send Error Notification to Admin (Calendar)",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        -384,
+        -64
+      ],
+      "webhookId": "8a44e15c-026e-439b-aed3-49fa30b0753a",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "tSl8R5JMgoXQ7nkb",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Form Submission Webhook": {
+      "main": [
+        [
+          {
+            "node": "Workflow Configuration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Workflow Configuration": {
+      "main": [
+        [
+          {
+            "node": "Add Student to Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add Student to Google Sheets": {
+      "main": [
+        [
+          {
+            "node": "Check Google Sheets Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Google Sheets Success": {
+      "main": [
+        [
+          {
+            "node": "Schedule Interview in Calendar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification to Admin (Sheets)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Interview in Calendar": {
+      "main": [
+        [
+          {
+            "node": "Check Calendar Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Calendar Success": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation Email to Student",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send Error Notification to Admin (Calendar)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Confirmation Email to Student": {
+      "main": [
+        [
+          {
+            "node": "Notify HR Team via Slack",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Error Notification to Admin (Sheets)": {
+      "main": [
+        []
+      ]
+    },
+    "Send Error Notification to Admin (Calendar)": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "88550734-e564-4c6d-b5fa-9eb0f35f8ff6",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d26c139538d6b0afa60341cd24965ebfdc31c04a07658494793b405e8090e096"
+  },
+  "id": "akURzj6voGH08LBz",
+  "tags": []
+}
